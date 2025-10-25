@@ -6,12 +6,12 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com/bonniepet', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/bonniepet', label: 'Instagram' },
-    { icon: Youtube, href: 'https://youtube.com/@bonniepet', label: 'YouTube' },
-    { icon: Heart, href: 'https://pinterest.com/bonniepet', label: 'Pinterest' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/bonniepet', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/bonniepet', label: 'Twitter' },
+    { icon: Facebook, href: 'https://facebook.com/bonniepetofficial', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/bonniepetofficial', label: 'Instagram' },
+    { icon: Youtube, href: 'https://www.youtube.com/channel/UCsa72ovB7w3Lxk_LqmJ41Sw', label: 'YouTube' },
+    { icon: Heart, href: 'https://www.pinterest.ca/bonniepetofficial/', label: 'Pinterest' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/bonniepet/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://twitter.com/OfficialBPet', label: 'Twitter' },
   ];
 
   return (
