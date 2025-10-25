@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Youtube, Heart, Linkedin, Twitter } from 'lucide-react';
+import logoImg from '@/assets/logo.png';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -51,7 +52,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
               <img 
-                src="https://via.placeholder.com/121x119?text=BP" 
+                src={logoImg} 
                 alt="BonniePet Logo" 
                 className="h-10 w-auto"
               />
