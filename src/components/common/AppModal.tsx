@@ -1,28 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import { useAppDeepLink } from '@hooks/useAppDeepLink';
 
 interface AppModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+/** androidScheme and iosScheme
+ * Require you to implement this in the app
+ * Connected with layout/AppDeepLinkHandheld.tsx
+ * Opens mobile app if BonniePet is installed, otherwise
+ * it opens the PlayStore.
+ *
+ * @param isOpen
+ * @param onClose
+ * @constructor
+ */
 export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
+  const { tryOpenApp } = useAppDeepLink({
+    androidScheme: 'bonniepet',
+    iosScheme: 'bonniepet',
+    androidPackage: 'com.bonniepet.app',
+    iosAppId: 'id6479655315',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.bonniepet.app&pcampaignid=web_share',
+    appStoreUrl: 'https://apps.apple.com/in/app/bonniepet/id6479655315',
+  });
+
+  // Set cookie when modal shows
+  useEffect(() => {
+    if (isOpen) {
+      localStorage.setItem('bonniepet_modal_shown', Date.now().toString());
+      console.log('Modal shown - cookie set');
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleOpenApp = () => {
-    // Try to detect OS and redirect to appropriate app store
-    const userAgent = navigator.userAgent.toLowerCase();
-    
-    if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
-      // iOS
-      window.location.href = 'https://apps.apple.com/app/bonniepet';
-    } else if (userAgent.includes('android')) {
-      // Android
-      window.location.href = 'https://play.google.com/store/apps/details?id=com.bonniepet';
-    } else {
-      // Fallback to iOS
-      window.location.href = 'https://apps.apple.com/app/bonniepet';
-    }
+    // Try to open the app, will fallback to store if not installed
+    tryOpenApp();
+    onClose();
   };
 
   return (
@@ -37,21 +55,11 @@ export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
           <X size={24} />
         </button>
 
-        {/* Success Icon */}
-        <div className="mb-6 flex justify-center">
-          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-            <div className="text-2xl text-white font-bold">✓</div>
-          </div>
-        </div>
-
         {/* Content */}
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
-          Success
-        </h2>
-        <p className="text-center text-gray-600 mb-8 text-sm">
           Open in App?
-        </p>
-        <p className="text-center text-gray-500 mb-6 text-xs">
+        </h2>
+        <p className="text-center text-gray-600 mb-8 text-base">
           For the best experience, open the BonniePet app.
         </p>
 

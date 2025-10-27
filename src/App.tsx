@@ -5,84 +5,76 @@ import { DownloadSection } from '@components/layouts/DownloadSection';
 import { Footer } from '@components/layouts/Footer';
 import { AppModal } from '@components/common/AppModal';
 import { useMobileDetect } from '@hooks/useMobileDetect';
-import { useModalCooldown } from '@hooks/useModalCooldown';
+// import { DebugInfo } from '@/debug/DebugInfo'; // use this for debugging mobile view
+
+// Views
+export type AppView = 'login' | 'register' | 'forgot-password' | 'success';
 
 export default function App() {
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [showAppModal, setShowAppModal] = useState(false);
-  const [modalDismissed, setModalDismissed] = useState(false);
-  const isMobile = useMobileDetect();
-  const { canShowModal, setModalShown } = useModalCooldown();
+    const [currentView, setCurrentView] = useState<AppView>('login');
+    const isMobile = useMobileDetect();
+    const [showAppModal, setShowAppModal] = useState(false);
 
-  // Debug logging
-  useEffect(() => {
-    console.log('App State:', { showSuccess, isMobile, showAppModal, canShowModal, modalDismissed });
-  }, [showSuccess, isMobile, showAppModal, canShowModal, modalDismissed]);
+    // Show app modal once on every page for mobile users
+    useEffect(() => {
+        if (isMobile && !showAppModal) {
+            const timer = setTimeout(() => {
+                console.log('Showing app modal on mobile');
+                setShowAppModal(true);
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [isMobile]);
 
-  // Show app modal on all pages for mobile users (unless cooldown is active or dismissed)
-  useEffect(() => {
-    if (isMobile && canShowModal && !modalDismissed) {
-      console.log('Showing app modal - user is on mobile and cooldown is inactive');
-      // Small delay to ensure page is rendered first
-      const timer = setTimeout(() => {
-        setShowAppModal(true);
-        setModalShown(); // Start the 24-hour cooldown
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isMobile, canShowModal, modalDismissed, setModalShown]);
+    const handleSuccess = () => {
+        console.log('Login successful');
+        setCurrentView('success');
+    };
 
-  // Show app modal when success is reached on mobile (even during cooldown)
-  useEffect(() => {
-    if (showSuccess && isMobile) {
-      console.log('Showing app modal on success - user is on mobile');
-      const timer = setTimeout(() => {
-        setShowAppModal(true);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [showSuccess, isMobile]);
+    const handleLoginClick = () => {
+        console.log('Back to login');
+        setCurrentView('login');
+    };
 
-  const handleSuccess = () => {
-    console.log('Login successful');
-    setShowSuccess(true);
-  };
+    const handleRegisterClick = () => {
+        console.log('Navigate to registration');
+        setCurrentView('register');
+    };
 
-  const handleLoginClick = () => {
-    console.log('Back to login');
-    setShowSuccess(false);
-    setShowAppModal(false);
-  };
+    const handleForgotPasswordClick = () => {
+        console.log('Navigate to forgot password');
+        setCurrentView('forgot-password');
+    };
 
-  const handleCloseModal = () => {
-    console.log('Modal closed');
-    setShowAppModal(false);
-    setModalDismissed(true); // Prevent modal from showing again on same page
-  };
+    const handleCloseModal = () => {
+        console.log('Modal closed');
+        setShowAppModal(false);
+    };
 
-  return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <TopBar onLoginClick={handleLoginClick} />
-      <Body 
-        showSuccess={showSuccess} 
-        onSuccess={handleSuccess} 
-        onLoginClick={handleLoginClick} 
-      />
-      <DownloadSection />
-      <Footer />
-      
-      {/* App Modal for Mobile Users */}
-      <AppModal isOpen={showAppModal} onClose={handleCloseModal} />
-      
-      {/* Debug Info - Remove in production */}
-      <div className="fixed bottom-4 right-4 bg-black text-white p-3 rounded text-xs z-40 max-w-xs">
-        <p>Screen: {window.innerWidth}px</p>
-        <p>Mobile: {isMobile ? 'YES' : 'NO'}</p>
-        <p>Success: {showSuccess ? 'YES' : 'NO'}</p>
-        <p>Modal: {showAppModal ? 'YES' : 'NO'}</p>
-        <p>Cooldown OK: {canShowModal ? 'YES' : 'NO'}</p>
-        <p>Dismissed: {modalDismissed ? 'YES' : 'NO'}</p>
-      </div>
-    </div>
-  );
+    return (
+        <div className="min-h-screen bg-white flex flex-col">
+            <TopBar onLoginClick={handleLoginClick} />
+            <Body
+                currentView={currentView}
+                onSuccess={handleSuccess}
+                onLoginClick={handleLoginClick}
+                onRegisterClick={handleRegisterClick}
+                onForgotPasswordClick={handleForgotPasswordClick}
+            />
+            <DownloadSection />
+            <Footer />
+
+            {/* App Modal for Mobile Users */}
+            <AppModal isOpen={showAppModal} onClose={handleCloseModal} />
+
+            {/* Debug Info */}
+            {/*process.env.NODE_ENV === 'development' && (
+                <DebugInfo
+                    isMobile={isMobile}
+                    showSuccess={currentView === 'success'}
+                    showAppModal={showAppModal}
+                />
+            )*/}
+        </div>
+    );
 }

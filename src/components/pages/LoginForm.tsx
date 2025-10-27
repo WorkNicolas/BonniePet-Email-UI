@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { FormInput } from '@components/common/FormInput';
 import { Button } from '@components/common/Button';
-import { Facebook, Chrome } from 'lucide-react';
 
 interface LoginFormProps {
-  onSuccess?: () => void;
+    onSuccess: () => void;
+    onRegisterClick: () => void;
+    onForgotPasswordClick: () => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick, onForgotPasswordClick } : LoginFormProps ) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
@@ -46,9 +47,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center lg:text-left mb-2 text-gray-800">
             Welcome!
           </h1>
-          <p className="text-center lg:text-left text-gray-600 mb-8 sm:mb-10 text-sm sm:text-base">
-            You have been missed.
-          </p>
 
           <FormInput
             type="email"
@@ -75,7 +73,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
             LOGIN
           </Button>
 
-          <Button 
+          <Button onClick={onForgotPasswordClick}
             variant="primary" 
             className="bg-yellow-400 text-black hover:bg-yellow-500 mb-6 sm:mb-8 w-full sm:w-auto"
           >
@@ -85,17 +83,17 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
 
         {/* Right Column - Social Buttons */}
         <div className="flex flex-col justify-center gap-4">
-          <Button variant="social" className="mb-4 sm:mb-6">
-            <Facebook size={20} />
-            <span>Continue with Facebook</span>
-          </Button>
 
           <Button variant="social" className="mb-8 sm:mb-10">
-            <Chrome size={20} />
+            <img 
+              src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" 
+              alt="Google Chrome" 
+              className="w-5 h-5"
+            />
             <span>Sign in with Google</span>
           </Button>
 
-          <Button variant="primary" className="bg-yellow-400 text-black hover:bg-yellow-500 w-full">
+          <Button onClick={onRegisterClick} variant="primary" className="bg-yellow-400 text-black hover:bg-yellow-500 w-full">
             Don't have an account? Register
           </Button>
         </div>
