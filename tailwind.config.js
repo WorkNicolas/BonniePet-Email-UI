@@ -7,7 +7,7 @@ export default {
     extend: {
       colors: {
         primary: '#1e40af', // blue-600
-        secondary: '#fde047', // yellow-400
+        secondary: '#f2db43', // yellow-400
       },
       spacing: {
         safe: 'max(1rem, env(safe-area-inset-left))',

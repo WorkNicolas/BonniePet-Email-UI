@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -52,7 +51,7 @@ export function ForgotPasswordForm({ onLoginClick }: ForgotPasswordFormProps) {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+    <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-2xl shadow-black/50">
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
         Welcome!
       </h2>

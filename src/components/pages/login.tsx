@@ -8,7 +8,7 @@ interface LoginFormProps {
     onForgotPasswordClick: () => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick, onForgotPasswordClick } : LoginFormProps ) => {
+export const Login: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick, onForgotPasswordClick } : LoginFormProps ) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
@@ -40,7 +40,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-lg">
+    <div
+      className="w-full max-w-6xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-2xl shadow-black/50"
+      style={{ boxShadow: '0 -14px 30px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.5)' }}
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         {/* Left Column - Form */}
         <div className="flex flex-col justify-center">

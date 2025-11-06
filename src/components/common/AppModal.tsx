@@ -18,7 +18,7 @@ interface AppModalProps {
  * @constructor
  */
 export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
-  const { tryOpenApp } = useAppDeepLink({
+  const { tryOpenApp, isAppInstalled } = useAppDeepLink({
     androidScheme: 'bonniepet',
     iosScheme: 'bonniepet',
     androidPackage: 'com.bonniepet.app',
@@ -71,12 +71,20 @@ export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
           >
             Open App
           </button>
-          <button
-            onClick={onClose}
-            className="w-full py-3 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-lg font-semibold text-sm transition-colors"
-          >
-            Continue Browser
-          </button>
+            {/* If we are logging to desktop or laptop, option to continue browser should be visible */}
+            {/* However, if we are logging in mobile browser, continue browser should not be visible */}
+            {/* isAppInstalled from useAppDeepLink.ts is related to this. Requires app implementation */}
+            <button
+                onClick={onClose}
+                disabled={isAppInstalled === true}
+                className={`w-full py-3 rounded-lg font-semibold text-sm transition-colors ${
+                    isAppInstalled === true
+                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        : 'bg-gray-300 text-gray-700 hover:bg-gray-400'
+                }`}
+            >
+                Continue Browser
+            </button>
         </div>
       </div>
     </div>

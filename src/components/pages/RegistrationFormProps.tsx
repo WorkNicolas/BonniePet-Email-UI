@@ -66,7 +66,7 @@ export const RegistrationForm: React.FC<RegistrationFormPropsType> = ({ onLoginC
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-lg">
+    <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-2xl shadow-black/50">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
         Create a new account
       </h1>

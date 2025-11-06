@@ -1,4 +1,4 @@
-import { LoginForm } from '@components/pages/LoginForm';
+import { Login } from '@/components/pages/login';
 import { RegistrationForm } from '@components/pages/RegistrationFormProps';
 import { SuccessMessage } from '@components/pages/SuccessMessage';
 import { ForgotPasswordForm } from '@components/pages/ForgotPasswordForm';
@@ -16,7 +16,7 @@ export function Body({ currentView, onSuccess, onLoginClick, onRegisterClick, on
     return (
         <main className="flex-grow flex items-center justify-center px-4 py-8">
             {currentView === 'login' && (
-                <LoginForm
+                <Login
                     onSuccess={onSuccess}
                     onRegisterClick={onRegisterClick}
                     onForgotPasswordClick={onForgotPasswordClick}
