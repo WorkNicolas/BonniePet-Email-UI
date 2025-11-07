@@ -18,7 +18,7 @@ interface AppModalProps {
  * @constructor
  */
 export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
-  const { tryOpenApp } = useAppDeepLink({
+  const { tryOpenApp, isAppInstalled } = useAppDeepLink({
     androidScheme: 'bonniepet',
     iosScheme: 'bonniepet',
     androidPackage: 'com.bonniepet.app',
