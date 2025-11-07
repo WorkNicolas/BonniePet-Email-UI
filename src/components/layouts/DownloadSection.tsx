@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/components.css';
+import '../../styles/components/layouts/downloadsection.css';
 
 export const DownloadSection: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Facebook, Instagram, Youtube, Linkedin, ArrowUp } from 'lucide-react';
 import logoImg from '@/assets/logo.png';
-import '../../styles/components.css';
+import '../../styles/components/layouts/footer.css';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

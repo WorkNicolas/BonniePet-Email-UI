@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from '@components/common/FormInput';
 import { Button } from '@components/common/Button';
-import '../../styles/components.css';
+import '../../styles/components/pages/loginform.css';
 
 interface LoginFormProps {
     onSuccess: () => void;

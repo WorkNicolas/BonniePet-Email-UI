@@ -1,6 +1,6 @@
 import React from 'react';
 import logoImg from '@/assets/logo.png';
-import '../../styles/components.css';
+import '../../styles/components/layouts/topbar.css';
 
 interface TopBarProps {
   onLoginClick?: () => void;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import '../../styles/components.css';
+import '../../styles/components/pages/registrationformprops.css';
 
 interface RegistrationFormPropsType {
   onLoginClick: () => void;

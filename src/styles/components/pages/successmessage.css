@@ -1,0 +1,78 @@
+/* ==========================================
+   SUCCESS MESSAGE
+   ========================================== */
+
+.success-card {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.success-icon-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.success-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-checkmark {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.success-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.success-message {
+    color: #4b5563;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .success-card {
+        padding: 2.5rem;
+    }
+
+    .success-icon-container {
+        margin-bottom: 2rem;
+    }
+
+    .success-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .success-checkmark {
+        font-size: 1.875rem;
+    }
+
+    .success-title {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+    }
+
+    .success-message {
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+    }
+}

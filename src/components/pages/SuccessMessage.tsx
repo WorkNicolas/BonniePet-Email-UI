@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@components/common/Button';
+import '../../styles/components/pages/successmessage.css';
 
 interface SuccessMessageProps {
   onLoginClick?: () => void;

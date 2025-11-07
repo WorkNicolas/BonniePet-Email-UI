@@ -1,0 +1,146 @@
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+    background-color: #facc15;
+}
+
+.footer-main {
+    padding: 3rem 1rem;
+}
+
+.footer-content {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.footer-brand-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #9ca3af;
+}
+
+.footer-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-logo {
+    height: 4rem;
+    width: auto;
+}
+
+.footer-brand-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.footer-tagline {
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.footer-social-link {
+    color: #ffffff;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.footer-social-link:hover {
+    color: #2563eb;
+}
+
+.footer-bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.footer-copyright {
+    color: #374151;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.footer-spacer {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.back-to-top-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 40;
+    background-color: #22c55e;
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.back-to-top-btn:hover {
+    background-color: #16a34a;
+}
+
+@media (min-width: 640px) {
+    .footer-main {
+        padding: 4rem 2rem;
+    }
+
+    .footer-logo {
+        height: 5rem;
+    }
+
+    .footer-brand-title {
+        font-size: 1.875rem;
+    }
+
+    .footer-tagline {
+        font-size: 1rem;
+    }
+
+    .footer-social-links {
+        gap: 2rem;
+    }
+
+    .footer-bottom-section {
+        flex-direction: row;
+    }
+
+    .footer-copyright {
+        font-size: 0.875rem;
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-brand-title {
+        font-size: 2.25rem;
+    }
+
+    .footer-tagline {
+        font-size: 1.125rem;
+    }
+}
