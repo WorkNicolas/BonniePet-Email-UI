@@ -89,9 +89,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             <span>Sign in with Google</span>
           </Button>
 
-          <Button onClick={onRegisterClick} variant="primary">
-            Don't have an account? Register
-          </Button>
+            <Button
+                onClick={onRegisterClick}
+                variant="primary"
+                className="register-btn"
+            >
+                Don't have an account? Register
+            </Button>
         </div>
       </div>
     </div>

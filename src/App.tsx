@@ -1,3 +1,4 @@
+// App.tsx
 import { useState, useEffect } from 'react';
 import { TopBar } from '@components/layouts/TopBar';
 import { Body } from '@components/layouts/Body';
@@ -5,55 +6,54 @@ import { DownloadSection } from '@components/layouts/DownloadSection';
 import { Footer } from '@components/layouts/Footer';
 import { AppModal } from '@components/common/AppModal';
 import { useMobileDetect } from '@hooks/useMobileDetect';
-// import { DebugInfo } from '@/debug/DebugInfo'; // use this for debugging mobile view
+import { SuccessRedirectModal } from '@components/common/SuccessRedirectModal';
 
-// Views
 export type AppView = 'login' | 'register' | 'forgot-password' | 'success';
 
 export default function App() {
     const [currentView, setCurrentView] = useState<AppView>('login');
     const isMobile = useMobileDetect();
     const [showAppModal, setShowAppModal] = useState(false);
+    const [showSuccessRedirect, setShowSuccessRedirect] = useState(false);
 
-    // Show app modal once on every page for mobile users
     useEffect(() => {
         if (isMobile && !showAppModal) {
             const timer = setTimeout(() => {
-                console.log('Showing app modal on mobile');
                 setShowAppModal(true);
             }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [isMobile]);
+    }, [isMobile, showAppModal]);
 
     const handleSuccess = () => {
-        console.log('Login successful');
+        // login / verify success
         setCurrentView('success');
+        setShowSuccessRedirect(true); // SECTION 5
     };
 
     const handleLoginClick = () => {
-        console.log('Back to login');
         setCurrentView('login');
     };
 
     const handleRegisterClick = () => {
-        console.log('Navigate to registration');
         setCurrentView('register');
     };
 
     const handleForgotPasswordClick = () => {
-        console.log('Navigate to forgot password');
         setCurrentView('forgot-password');
     };
 
     const handleCloseModal = () => {
-        console.log('Modal closed');
         setShowAppModal(false);
     };
 
     return (
         <div className="app-container">
-            <TopBar onLoginClick={handleLoginClick} />
+            {/* SECTION 3 says "when mail-verify, don’t show login in header"
+          our success view is the closest analogue — TopBar has no button,
+          so we just keep it */}
+            <TopBar />
+
             <Body
                 currentView={currentView}
                 onSuccess={handleSuccess}
@@ -61,20 +61,18 @@ export default function App() {
                 onRegisterClick={handleRegisterClick}
                 onForgotPasswordClick={handleForgotPasswordClick}
             />
-            <DownloadSection />
-            <Footer />
 
-            {/* App Modal for Mobile Users */}
+            <DownloadSection />
+
+            {/* center footer only on the login page */}
+            <Footer center={currentView === 'login'} />
+
             <AppModal isOpen={showAppModal} onClose={handleCloseModal} />
 
-            {/* Debug Info */}
-            {/*process.env.NODE_ENV === 'development' && (
-                <DebugInfo
-                    isMobile={isMobile}
-                    showSuccess={currentView === 'success'}
-                    showAppModal={showAppModal}
-                />
-            )*/}
+            <SuccessRedirectModal
+                isOpen={showSuccessRedirect}
+                onClose={() => setShowSuccessRedirect(false)}
+            />
         </div>
     );
 }

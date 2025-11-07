@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/components/components.css'; // Adjust the path if necessary
+import '../../styles/components/common/button.css';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;

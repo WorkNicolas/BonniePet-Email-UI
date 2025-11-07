@@ -6,15 +6,12 @@ interface TopBarProps {
   onLoginClick?: () => void;
 }
 
-export const TopBar: React.FC<TopBarProps> = ({ onLoginClick }) => {
+export const TopBar: React.FC<TopBarProps> = () => {
   return (
     <div className="top-bar">
       <div className="top-bar-logo-wrapper">
         <img src={logoImg} alt="BonniePet Logo" className="top-bar-logo" />
       </div>
-      <button onClick={onLoginClick} className="top-bar-login-btn">
-        Login
-      </button>
     </div>
   );
 };

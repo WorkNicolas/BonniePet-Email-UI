@@ -1,0 +1,57 @@
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #facc15;
+    color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #eab308;
+}
+
+.btn-secondary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.btn-social:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-social img {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}

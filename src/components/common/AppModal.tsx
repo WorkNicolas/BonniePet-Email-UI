@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useAppDeepLink } from '@hooks/useAppDeepLink';
+import '../../styles/components/common/appmodal.css';
 
 interface AppModalProps {
   isOpen: boolean;
@@ -18,7 +19,7 @@ interface AppModalProps {
  * @constructor
  */
 export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
-  const { tryOpenApp, isAppInstalled } = useAppDeepLink({
+  const { tryOpenApp} = useAppDeepLink({
     androidScheme: 'bonniepet',
     iosScheme: 'bonniepet',
     androidPackage: 'com.bonniepet.app',

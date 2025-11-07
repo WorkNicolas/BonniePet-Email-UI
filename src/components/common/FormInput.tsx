@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import '../../styles/components/components.css';
+import '../../styles/components/common/forminput.css';
 
 interface FormInputProps {
   label?: string;

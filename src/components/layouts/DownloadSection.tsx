@@ -23,7 +23,7 @@ export const DownloadSection: React.FC = () => {
             </a>
           </div>
 
-          <div className="download-badge">
+          <div className="download-badge google-play-badge">
             <a 
               href="https://play.google.com/store/apps/details?id=com.bonniepet.app&pcampaignid=web_share" 
               target="_blank" 

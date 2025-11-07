@@ -9,7 +9,10 @@
     background-color: #ffffff;
     border-radius: 1rem;
     padding: 1.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow:
+            0 -12px 25px -18px rgba(0, 0, 0, 0.5),
+            0 20px 35px -15px rgba(0, 0, 0, 0.75);
+
 }
 
 .login-layout {
@@ -88,4 +91,63 @@
     .login-title {
         text-align: left;
     }
+}
+
+/* Professor Requirements */
+.login-form-section .form-group .form-control {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+}
+
+.login-btn {
+    display: block;
+    margin: 1rem auto;
+    max-width: 12rem;
+}
+
+/* Center the "Sign in with Google" button */
+.login-google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Centers the button horizontally */
+}
+
+.login-google-btn {
+    max-width: 16rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.login-google-btn img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+/* Style adjustments for Forgot Password and Register buttons */
+.login-forgot-btn,
+.login-social-section > .Button:nth-child(2) {
+    font-size: 1rem; /* Slightly smaller than default but bigger than login button */
+    padding: 0.75rem 1.5rem; /* Balanced padding for a slightly bigger appearance */
+    max-width: 14rem; /* Maintain their size slightly larger than the login button */
+    margin: 0.5rem auto; /* Center and add spacing between elements */
+}
+
+/* Style adjustments for the Register button */
+.login-social-section > .Button:last-child {
+    font-size: 1.125rem; /* Slightly larger than Forgot Password, noticeable size distinction */
+    padding: 0.85rem 1.75rem; /* Balanced size and spacing */
+    max-width: 15rem; /* Larger than the Login Button */
+    margin: 0.5rem auto; /* Center alignment and spacing */
+}
+
+/* Style adjustments for the Register button */
+.register-btn {
+    font-size: 1.125rem; /* Slightly larger than the Forgot Password button */
+    padding: 0.85rem 1.75rem; /* Adjust padding for a balanced but slightly larger look */
+    max-width: 20rem; /* Larger than the Login button */
+    margin: 0.5rem auto; /* Center alignment and consistent spacing */
+    display: block; /* Ensure consistent layout centering */
 }
