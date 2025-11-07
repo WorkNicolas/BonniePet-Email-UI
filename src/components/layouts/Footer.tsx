@@ -38,13 +38,23 @@ export const Footer: React.FC<FooterProps> = () => {
         { icon: Linkedin, href: 'https://www.linkedin.com/company/bonniepet/', label: 'LinkedIn' },
         {
             icon: () => (
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
                     <path d="M18.5 7.8c-.9-.5-1.6-1.2-2-2.1-.2-.4-.3-.9-.4-1.4h-2.3v10.3c0 1-.5 1.8-1.5 2.1-.7.2-1.3.1-1.9-.3-.5-.4-.8-.9-.9-1.6-.2-1.1.4-2.1 1.5-2.4.3-.1.7-.1 1-.1V9.9c-.3 0-.6 0-.9.1-1 .2-1.9.7-2.6 1.5-.9 1-1.2 2.2-1 3.5.2 1.3.8 2.4 2 3.1 1.1.7 2.4.8 3.7.5 1.8-.5 2.9-2 2.9-3.9V9.2c.6.7 1.3 1.2 2.1 1.5.4.2.9.3 1.3.3V8.6c-.5-.1-1-.3-1.5-.5z" />
                 </svg>
             ),
             href: 'https://www.tiktok.com/@bonniepetofficial?lang=en-GB',
             label: 'TikTok',
             type: 'svg',
+        },
+        {
+            icon: () => (
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            ),
+            href: 'https://twitter.com/OfficialBPet',
+            label: 'X',
+            type: 'svg'
         },
     ];
 
