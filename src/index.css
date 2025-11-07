@@ -102,3 +102,10 @@ img {
 /* ==========================================
    COMMON
    ========================================== */
+:root {
+    --primary-color: #f2db43;
+    --primary-color-hover: #e0cb3d;
+    --secondary-color: #2563eb;
+    --secondary-color-hover: #1c4cb8;
+    --text-on-primary: #000;
+}

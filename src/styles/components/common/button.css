@@ -14,21 +14,21 @@
 }
 
 .btn-primary {
-    background-color: #facc15;
+    background-color: var(--primary-color);;
     color: #000000;
 }
 
 .btn-primary:hover {
-    background-color: #eab308;
+    background-color: var(--primary-color-hover);
 }
 
 .btn-secondary {
-    background-color: #2563eb;
+    background-color: var(--secondary-color);
     color: #ffffff;
 }
 
 .btn-secondary:hover {
-    background-color: #1d4ed8;
+    background-color: var(--secondary-color-hover);
 }
 
 .btn-social {

@@ -3,7 +3,7 @@
    ========================================== */
 
 .download-section {
-    background-color: #facc15;
+    background-color: var(--primary-color);;
     padding: 2rem 1rem;
 }
 

@@ -3,7 +3,7 @@
    ========================================== */
 
 .top-bar {
-    background-color: #facc15;
+    background-color: var(--primary-color);;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@
 
 .top-bar-login-btn:hover {
     background-color: #ffffff;
-    color: #facc15;
+    color: var(--primary-color);;
 }
 
 @media (min-width: 640px) {

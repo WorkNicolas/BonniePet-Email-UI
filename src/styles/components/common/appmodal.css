@@ -71,7 +71,7 @@
     border-radius: 0.5rem;
     font-weight: 600;
     font-size: 0.875rem;
-    background-color: #facc15;
+    background-color: var(--primary-color);;
     color: #000000;
     border: none;
     cursor: pointer;
