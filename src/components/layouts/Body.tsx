@@ -1,4 +1,4 @@
-import { Login } from '@/components/pages/login';
+import { LoginForm } from '../pages/LoginForm';
 import { RegistrationForm } from '@components/pages/RegistrationFormProps';
 import { SuccessMessage } from '@components/pages/SuccessMessage';
 import { ForgotPasswordForm } from '@components/pages/ForgotPasswordForm';
@@ -16,7 +16,7 @@ export function Body({ currentView, onSuccess, onLoginClick, onRegisterClick, on
     return (
         <main className="main-content">
             {currentView === 'login' && (
-                <Login
+                <LoginForm
                     onSuccess={onSuccess}
                     onRegisterClick={onRegisterClick}
                     onForgotPasswordClick={onForgotPasswordClick}
