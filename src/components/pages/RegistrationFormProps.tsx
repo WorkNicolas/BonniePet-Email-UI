@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import '../../styles/components.css';
 
 interface RegistrationFormPropsType {
-    onLoginClick: () => void;
+  onLoginClick: () => void;
 }
 
-export const RegistrationForm: React.FC<RegistrationFormPropsType> = ({ onLoginClick } : RegistrationFormPropsType) => {
+export const RegistrationForm: React.FC<RegistrationFormPropsType> = ({ onLoginClick }: RegistrationFormPropsType) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +24,6 @@ export const RegistrationForm: React.FC<RegistrationFormPropsType> = ({ onLoginC
 
   const handleChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
     if (errors[field as keyof typeof errors]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
@@ -66,98 +66,76 @@ export const RegistrationForm: React.FC<RegistrationFormPropsType> = ({ onLoginC
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-lg">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
-        Create a new account
-      </h1>
+    <div className="registration-card">
+      <h1 className="registration-title">Create a new account</h1>
 
-      {/* Name Input */}
-      <div className="mb-4 sm:mb-6">
+      <div className="form-group">
         <input
           type="text"
           placeholder="Name"
           value={formData.name}
           onChange={(e) => handleChange('name', e.target.value)}
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-lg text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+          className="form-control"
         />
-        {errors.name && (
-          <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.name}</p>
-        )}
+        {errors.name && <p className="form-error">{errors.name}</p>}
       </div>
 
-      {/* Email Input */}
-      <div className="mb-4 sm:mb-6">
+      <div className="form-group">
         <input
           type="email"
           placeholder="Email"
           value={formData.email}
           onChange={(e) => handleChange('email', e.target.value)}
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-lg text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+          className="form-control"
         />
-        {errors.email && (
-          <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.email}</p>
-        )}
+        {errors.email && <p className="form-error">{errors.email}</p>}
       </div>
 
-      {/* Password Input */}
-      <div className="relative mb-4 sm:mb-6">
+      <div className="form-group">
         <input
           type={showPassword ? 'text' : 'password'}
           placeholder="Password"
           value={formData.password}
           onChange={(e) => handleChange('password', e.target.value)}
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-lg text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+          className="form-control"
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          className="password-toggle"
         >
           {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
         </button>
-        {errors.password && (
-          <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.password}</p>
-        )}
+        {errors.password && <p className="form-error">{errors.password}</p>}
       </div>
 
-      {/* Confirm Password Input */}
-      <div className="relative mb-6 sm:mb-8">
+      <div className="form-group">
         <input
           type={showConfirmPassword ? 'text' : 'password'}
           placeholder="Confirm Password"
           value={formData.confirmPassword}
           onChange={(e) => handleChange('confirmPassword', e.target.value)}
-          className="w-full px-4 sm:px-6 py-3 sm:py-4 border-2 border-gray-300 rounded-lg text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+          className="form-control"
         />
         <button
           type="button"
           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+          className="password-toggle"
         >
           {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
         </button>
-        {errors.confirmPassword && (
-          <p className="text-red-500 text-xs sm:text-sm mt-1">{errors.confirmPassword}</p>
-        )}
+        {errors.confirmPassword && <p className="form-error">{errors.confirmPassword}</p>}
       </div>
 
-      {/* Register Button */}
-      <button
-        onClick={handleRegister}
-        className="w-full py-3 sm:py-4 bg-yellow-400 text-black hover:bg-yellow-500 rounded-lg font-semibold text-sm sm:text-base transition-colors mb-4"
-      >
+      <button onClick={handleRegister} className="btn btn-primary registration-submit-btn">
         Register
       </button>
 
-      {/* Login Link */}
-      <button
-        onClick={onLoginClick}
-        className="w-full py-3 sm:py-4 bg-blue-500 text-white hover:bg-blue-600 rounded-lg font-semibold text-sm sm:text-base transition-colors"
-      >
+      <button onClick={onLoginClick} className="btn btn-secondary">
         Already a member? Login
       </button>
     </div>
   );
-}
+};
 
 export default RegistrationForm;

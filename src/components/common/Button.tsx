@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/components.css'; // Adjust the path if necessary
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -12,15 +13,12 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseClasses = 'w-full py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition-colors';
-  const variants = {
-    primary: 'bg-yellow-400 text-black hover:bg-yellow-500',
-    secondary: 'bg-blue-600 text-white hover:bg-blue-700',
-    social: 'flex items-center justify-center gap-2 w-full py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition-colors bg-blue-600 text-white hover:bg-blue-700',
-  };
+  const variantClass = variant === 'primary' ? 'btn-primary' : 
+                       variant === 'secondary' ? 'btn-secondary' : 
+                       'btn-social';
 
   return (
-    <button className={`${baseClasses} ${variants[variant]} ${className}`} {...props}>
+    <button className={`btn ${variantClass} ${className}`} {...props}>
       {children}
     </button>
   );

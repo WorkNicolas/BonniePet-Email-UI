@@ -44,36 +44,34 @@ export const AppModal: React.FC<AppModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl p-8 max-w-sm w-full shadow-2xl relative">
+    <div className="app-modal-overlay">
+      <div className="app-modal-content">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className="app-modal-close"
           aria-label="Close"
         >
           <X size={24} />
         </button>
 
         {/* Content */}
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
-          Open in App?
-        </h2>
-        <p className="text-center text-gray-600 mb-8 text-base">
+        <h2 className="app-modal-title">Open in App?</h2>
+        <p className="app-modal-description">
           For the best experience, open the BonniePet app.
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col gap-3">
+        <div className="app-modal-buttons">
           <button
             onClick={handleOpenApp}
-            className="w-full py-3 bg-yellow-400 text-black hover:bg-yellow-500 rounded-lg font-semibold text-sm transition-colors text-center"
+            className="app-modal-open-button"
           >
             Open App
           </button>
           <button
             onClick={onClose}
-            className="w-full py-3 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-lg font-semibold text-sm transition-colors"
+            className="app-modal-continue-button"
           >
             Continue Browser
           </button>

@@ -14,7 +14,7 @@ interface BodyProps {
 
 export function Body({ currentView, onSuccess, onLoginClick, onRegisterClick, onForgotPasswordClick }: BodyProps) {
     return (
-        <main className="flex-grow flex items-center justify-center px-4 py-8">
+        <main className="main-content">
             {currentView === 'login' && (
                 <LoginForm
                     onSuccess={onSuccess}

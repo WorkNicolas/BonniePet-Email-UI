@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FormInput } from '@components/common/FormInput';
 import { Button } from '@components/common/Button';
+import '../../styles/components.css';
 
 interface LoginFormProps {
     onSuccess: () => void;
@@ -8,7 +9,11 @@ interface LoginFormProps {
     onForgotPasswordClick: () => void;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick, onForgotPasswordClick } : LoginFormProps ) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ 
+  onSuccess, 
+  onRegisterClick, 
+  onForgotPasswordClick 
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
@@ -40,13 +45,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-lg">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-        {/* Left Column - Form */}
-        <div className="flex flex-col justify-center">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center lg:text-left mb-2 text-gray-800">
-            Welcome!
-          </h1>
+    <div className="login-card">
+      <div className="login-layout">
+        <div className="login-form-section">
+          <h1 className="login-title">Welcome!</h1>
 
           <FormInput
             type="email"
@@ -65,35 +67,29 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick
             error={errors.password}
           />
 
-          <Button 
-            variant="primary" 
-            className="mb-4 sm:mb-6 w-full sm:w-auto" 
-            onClick={handleLogin}
-          >
+          <Button variant="primary" className="login-btn" onClick={handleLogin}>
             LOGIN
           </Button>
 
-          <Button onClick={onForgotPasswordClick}
+          <Button 
+            onClick={onForgotPasswordClick}
             variant="primary" 
-            className="bg-yellow-400 text-black hover:bg-yellow-500 mb-6 sm:mb-8 w-full sm:w-auto"
+            className="login-forgot-btn"
           >
             Forgot Password?
           </Button>
         </div>
 
-        {/* Right Column - Social Buttons */}
-        <div className="flex flex-col justify-center gap-4">
-
-          <Button variant="social" className="mb-8 sm:mb-10">
+        <div className="login-social-section">
+          <Button variant="social" className="login-google-btn">
             <img 
               src="https://www.google.com/chrome/static/images/chrome-logo-m100.svg" 
               alt="Google Chrome" 
-              className="w-5 h-5"
             />
             <span>Sign in with Google</span>
           </Button>
 
-          <Button onClick={onRegisterClick} variant="primary" className="bg-yellow-400 text-black hover:bg-yellow-500 w-full">
+          <Button onClick={onRegisterClick} variant="primary">
             Don't have an account? Register
           </Button>
         </div>

@@ -52,7 +52,7 @@ export default function App() {
     };
 
     return (
-        <div className="min-h-screen bg-white flex flex-col">
+        <div className="app-container">
             <TopBar onLoginClick={handleLoginClick} />
             <Body
                 currentView={currentView}

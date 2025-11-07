@@ -1,8 +1,8 @@
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import '../../styles/components.css';
 
 const forgotPasswordSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -33,10 +33,10 @@ export function ForgotPasswordForm({ onLoginClick }: ForgotPasswordFormProps) {
     try {
       // TODO: Replace with actual API call
       console.log('Requesting password reset for:', data.email);
-      
+
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       setSubmitMessage({
         type: 'success',
         text: 'Password reset link has been sent to your email!',
@@ -52,50 +52,48 @@ export function ForgotPasswordForm({ onLoginClick }: ForgotPasswordFormProps) {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
-        Welcome!
-      </h2>
+    <div className="forgot-password-card">
+      <h2 className="forgot-password-title">Welcome!</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
-        <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="forgot-password-form">
+        <div className="forgot-password-input-group">
           <input
             {...register('email')}
             type="email"
             placeholder="Enter Your E-Mail Id"
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+            className="forgot-password-input"
             disabled={isSubmitting}
           />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+            <p className="forgot-password-error-msg">{errors.email.message}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-3 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="forgot-password-submit-btn"
         >
           {isSubmitting ? 'Sending...' : 'Get Reset Password Url'}
         </button>
 
         {submitMessage && (
           <div
-            className={`p-3 rounded-md text-center ${
+            className={`forgot-password-alert ${
               submitMessage.type === 'success'
-                ? 'bg-green-50 text-green-800'
-                : 'bg-red-50 text-red-800'
+                ? 'forgot-password-alert-success'
+                : 'forgot-password-alert-error'
             }`}
           >
             {submitMessage.text}
           </div>
         )}
 
-        <div className="text-center mt-4">
+        <div className="forgot-password-back">
           <button
             type="button"
             onClick={onLoginClick}
-            className="text-gray-600 hover:text-yellow-600 transition-colors"
+            className="forgot-password-back-link"
           >
             Back to Login
           </button>
