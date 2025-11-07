@@ -87,7 +87,11 @@
     }
 }
 
-/* Professor's Specifications */
+/* ==========================================
+   PROFESSOR REQUIREMENTS
+   You can remove these, and it will still
+   look fine.
+   ========================================== */
 .google-play-badge {
     width: 100%;
     height: 5.1rem;
