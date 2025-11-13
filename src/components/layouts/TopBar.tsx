@@ -1,17 +1,23 @@
+// src/components/layouts/TopBar.tsx
 import React from 'react';
 import logoImg from '@/assets/logo.png';
-import '../../styles/components/layouts/topbar.css';
+import { useMobileDetect } from '@hooks/useMobileDetect';
+import '../../styles/components/layouts/topbar-hero.css';
 
-interface TopBarProps {
-  onLoginClick?: () => void;
-}
+export const TopBar: React.FC = () => {
+    const isMobile = useMobileDetect();
 
-export const TopBar: React.FC<TopBarProps> = () => {
-  return (
-    <div className="top-bar">
-      <div className="top-bar-logo-wrapper">
-        <img src={logoImg} alt="BonniePet Logo" className="top-bar-logo" />
-      </div>
-    </div>
-  );
+    return (
+        <header
+            className={`topbar-hero${isMobile ? ' is-mobile' : ''}`}
+            aria-label="BonniePet header"
+        >
+            <div className="topbar-hero__circle">
+                <img src={logoImg} alt="bp" className="topbar-hero__logo" />
+                <span className="topbar-hero__brand">bonniepet</span>
+            </div>
+        </header>
+    );
 };
+
+export default TopBar;

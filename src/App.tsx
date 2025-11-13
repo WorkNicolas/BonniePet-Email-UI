@@ -2,11 +2,12 @@
 import { useState, useEffect } from 'react';
 import { TopBar } from '@components/layouts/TopBar';
 import { Body } from '@components/layouts/Body';
-import { DownloadSection } from '@components/layouts/DownloadSection';
 import { Footer } from '@components/layouts/Footer';
 import { AppModal } from '@components/common/AppModal';
 import { useMobileDetect } from '@hooks/useMobileDetect';
 import { SuccessRedirectModal } from '@components/common/SuccessRedirectModal';
+import { useModalCooldown } from '@hooks/useModalCooldown';
+import { FooterLegal } from '@components/layouts/FooterLegal'; // ⬅️ add this import
 
 export type AppView = 'login' | 'register' | 'forgot-password' | 'success';
 
@@ -16,32 +17,27 @@ export default function App() {
     const [showAppModal, setShowAppModal] = useState(false);
     const [showSuccessRedirect, setShowSuccessRedirect] = useState(false);
 
+    const { canShowModal, setModalShown } = useModalCooldown();
+
     useEffect(() => {
-        if (isMobile && !showAppModal) {
-            const timer = setTimeout(() => {
-                setShowAppModal(true);
-            }, 1000);
-            return () => clearTimeout(timer);
-        }
-    }, [isMobile, showAppModal]);
+        if (!isMobile || !canShowModal || showAppModal) return;
+
+        const timer = setTimeout(() => {
+            setShowAppModal(true);
+            setModalShown();
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [isMobile, canShowModal, showAppModal, setModalShown]);
 
     const handleSuccess = () => {
-        // login / verify success
         setCurrentView('success');
-        setShowSuccessRedirect(true); // SECTION 5
+        setShowSuccessRedirect(true);
     };
 
-    const handleLoginClick = () => {
-        setCurrentView('login');
-    };
-
-    const handleRegisterClick = () => {
-        setCurrentView('register');
-    };
-
-    const handleForgotPasswordClick = () => {
-        setCurrentView('forgot-password');
-    };
+    const handleLoginClick = () => setCurrentView('login');
+    const handleRegisterClick = () => setCurrentView('register');
+    const handleForgotPasswordClick = () => setCurrentView('forgot-password');
 
     const handleCloseModal = () => {
         setShowAppModal(false);
@@ -49,9 +45,6 @@ export default function App() {
 
     return (
         <div className="app-container">
-            {/* SECTION 3 says "when mail-verify, don’t show login in header"
-          our success view is the closest analogue — TopBar has no button,
-          so we just keep it */}
             <TopBar />
 
             <Body
@@ -62,10 +55,13 @@ export default function App() {
                 onForgotPasswordClick={handleForgotPasswordClick}
             />
 
-            <DownloadSection />
+            {/* Desktop: show above footer */}
+            <FooterLegal variant="desktop" />
 
-            {/* center footer only on the login page */}
-            <Footer center={currentView === 'login'} />
+            <Footer />
+
+            {/* Mobile: show below footer */}
+            <FooterLegal variant="mobile" />
 
             <AppModal isOpen={showAppModal} onClose={handleCloseModal} />
 

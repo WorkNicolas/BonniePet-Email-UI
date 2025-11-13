@@ -1,0 +1,68 @@
+/* ==========================================
+   FOOTER LEGAL STRIP (ABOVE/BELOW FOOTER)
+   ========================================== */
+
+.footer-legal {
+    background-color: #ffffff;        /* ⬅️ same as body background */
+    color: #111827;                   /* ⬅️ same as body text */
+}
+
+.footer-legal__inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-legal__links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-legal__link,
+.footer-legal__dot,
+.footer-legal__copy {
+    color: #111827;              /* match main text color */
+    font-size: 0.875rem;
+}
+
+.footer-legal__link {
+    text-decoration: none;
+}
+
+.footer-legal__link:hover {
+    text-decoration: underline;
+}
+
+/* --- mobile-first visibility: show mobile variant, hide desktop --- */
+.footer-legal--desktop {
+    display: none;
+}
+
+.footer-legal--mobile {
+    display: block;
+}
+
+/* --- desktop (≥1024px): show above-footer variant, hide below-footer one --- */
+@media (min-width: 1024px) {
+    .footer-legal--desktop {
+        display: block;
+    }
+
+    .footer-legal--mobile {
+        display: none;
+    }
+
+    .footer-legal__inner {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}

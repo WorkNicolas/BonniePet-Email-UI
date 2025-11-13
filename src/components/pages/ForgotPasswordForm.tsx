@@ -89,15 +89,7 @@ export function ForgotPasswordForm({ onLoginClick }: ForgotPasswordFormProps) {
           </div>
         )}
 
-        <div className="forgot-password-back">
-          <button
-            type="button"
-            onClick={onLoginClick}
-            className="forgot-password-back-link"
-          >
-            Back to Login
-          </button>
-        </div>
+        
       </form>
     </div>
   );

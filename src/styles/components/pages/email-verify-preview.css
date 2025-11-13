@@ -1,0 +1,91 @@
+/* Simulate Gmail-ish background */
+.email-preview-page {
+    min-height: 100vh;
+    background-color: #f3f4f6; /* light gray */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.email-preview-wrapper {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* The email itself (what gets sent) */
+.email-card {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* yellow bars */
+.email-card__bar {
+    background-color: #f2db43;
+}
+
+.email-card__bar--top {
+    height: 40px;
+}
+
+.email-card__bar--bottom {
+    padding: 10px;
+    text-align: center;
+}
+
+.email-card__copyright {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #111827;
+}
+
+/* white content */
+.email-card__body {
+    padding: 40px 40px 30px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.email-card__headline {
+    margin: 0 0 16px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #111827;
+    line-height: 1.4;
+}
+
+.email-card__button-row {
+    margin: 24px 0;
+}
+
+/* tweak your reusable Button a bit inside email preview */
+.email-card__button {
+    min-width: 130px;
+}
+
+/* “Or copy link” text */
+.email-card__text {
+    margin: 0 0 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.email-card__link {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #2563eb;
+    word-break: break-all;
+}
+
+.email-card__link a {
+    color: #2563eb;
+    text-decoration: underline;
+}

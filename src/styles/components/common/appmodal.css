@@ -1,101 +1,165 @@
 /* ==========================================
-   APP MODAL
+   APP MODAL – Success / Open App
    ========================================== */
 
 .app-modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 50;
-    padding: 1rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
 }
 
 .app-modal-content {
-    background-color: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
-    max-width: 24rem;
-    width: 100%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     position: relative;
+    max-width: 26rem;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1.75rem;
+    box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.65);
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
 }
 
+/* Close button */
 .app-modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: #9ca3af;
+    top: 0.85rem;
+    right: 0.9rem;
     background: none;
     border: none;
-    cursor: pointer;
     padding: 0.25rem;
-    transition: color 0.2s;
+    cursor: pointer;
+    color: #111827;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.app-modal-close:hover {
-    color: #4b5563;
+/* Sections */
+.app-modal-section {
+    padding: 1.75rem 1.5rem 1.5rem;
+    text-align: center;
 }
 
+.app-modal-section--top {
+    padding-top: 2.25rem;
+    padding-bottom: 1.75rem;
+}
+
+.app-modal-section--bottom {
+    padding-top: 1.5rem;
+    padding-bottom: 1.85rem;
+}
+
+/* Divider */
+.app-modal-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+}
+
+/* Title and message */
 .app-modal-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 0.5rem;
 }
 
-.app-modal-description {
-    text-align: center;
-    color: #4b5563;
-    margin-bottom: 2rem;
+.app-modal-message {
+    margin: 0 0 0.75rem;
     font-size: 1rem;
+    color: #111827;
 }
 
-.app-modal-buttons {
+/* "Open the app" link */
+.app-modal-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Bottom texts */
+.app-modal-cta-heading {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.app-modal-cta-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #111827;
+}
+
+/* "Open in the browser" */
+.app-modal-browser-link {
+    margin-top: 0.4rem;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Store badges */
+.app-modal-badges {
+    margin-top: 1.3rem;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;   /* center vertically instead of flex-end */
     gap: 0.75rem;
+    flex-wrap: nowrap;     /* keep them on a single row */
 }
 
-.app-modal-open-button {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-size: 0.875rem;
-    background-color: var(--primary-color);;
-    color: #000000;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    text-align: center;
+
+/* base */
+.app-modal-badge {
+    display: inline-flex;
+    flex: 0 1 auto;        /* allow shrink, don’t force overflow */
+    max-width: 48%;        /* safety to avoid overflow on narrow screens */
 }
 
-.app-modal-open-button:hover {
-    background-color: #eab308;
+
+
+/* individual sizes – tweak these freely */
+:root {
+    --app-modal-badge-apple-h: 2.6rem;
+    --app-modal-badge-google-h: 4.0rem; /* e.g. a bit taller */
 }
 
-.app-modal-continue-button {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    font-size: 0.875rem;
-    background-color: #d1d5db;
-    color: #374151;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.app-modal-badge--apple {
+    height: var(--app-modal-badge-apple-h);
 }
 
-.app-modal-continue-button:hover {
-    background-color: #9ca3af;
+.app-modal-badge--google {
+    height: var(--app-modal-badge-google-h);
+}
+
+.app-modal-badge img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (min-width: 640px) {
+    :root {
+        --app-modal-badge-apple-h: 3.25rem;
+        --app-modal-badge-google-h: 3.75rem;
+    }
 }

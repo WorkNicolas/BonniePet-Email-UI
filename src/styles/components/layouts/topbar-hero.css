@@ -1,0 +1,78 @@
+/* ============================
+   Desktop (non-mobile) – semi-circle
+   ============================ */
+.topbar-hero {
+    position: relative;
+    width: 100%;
+    /* Only show a slice of the circle (bottom half) */
+    height: clamp(180px, 32vw, 260px);
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: center;
+}
+
+/* Circle centered horizontally, anchored to bottom.
+   Logo ends up in the center of the visible bottom half. */
+.topbar-hero__circle {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+
+    width: clamp(260px, 55vw, 520px);
+    height: clamp(260px, 55vw, 520px);
+    background-color: var(--primary-color);
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: clamp(20px, 6vh, 40px);
+}
+
+.topbar-hero__logo {
+    height: clamp(56px, 8vw, 96px);
+    width: auto;
+    display: block;
+}
+
+.topbar-hero__brand {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: clamp(16px, 2.2vw, 24px);
+    color: #000;
+}
+
+/* ============================
+   Mobile variant (keep existing behavior)
+   ============================ */
+.topbar-hero.is-mobile {
+    position: relative;
+    width: 100%;
+    height: 56vw;          /* visible slice of the circle */
+    overflow: hidden;      /* cannot scroll into the top half */
+    padding-top: 0;
+    margin-bottom: 12px;
+}
+
+.topbar-hero.is-mobile .topbar-hero__circle {
+    position: absolute;
+    left: 50%;
+    top: -44vw;            /* show only the lower portion */
+    transform: translateX(-50%);
+    width: 100vw;          /* circle fills screen width */
+    height: 100vw;
+    justify-content: flex-end;
+    padding-bottom: clamp(20px, 10vh, 64px); /* push logo/label down */
+}
+
+.topbar-hero.is-mobile .topbar-hero__logo {
+    height: clamp(64px, 14vw, 96px);
+}
+
+.topbar-hero.is-mobile .topbar-hero__brand {
+    font-size: clamp(18px, 4.5vw, 24px);
+}
